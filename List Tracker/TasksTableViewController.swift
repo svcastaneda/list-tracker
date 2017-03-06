@@ -1,21 +1,20 @@
 //
-//  ListViewController.swift
+//  TasksTableViewController.swift
 //  List Tracker
 //
-//  Created by David Para on 2/27/17.
+//  Created by David Para on 3/5/17.
 //  Copyright © 2017 DePaul University. All rights reserved.
 //
 
 import UIKit
 
-class ListViewController: UITableViewController {
+class TasksTableViewController: UITableViewController {
 
-    @IBOutlet var table: UITableView!
-    var data: [String] = ["Category 1", "Category 2", "Category 3"]
+    var data: [String] = ["Task 1", "Task 2", "Task 3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "My Lists"
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -43,12 +42,13 @@ class ListViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            
+        
         cell.textLabel?.text = data[indexPath.row]
         // Configure the cell...
 
         return cell
     }
+    
 
     /*
     // Override to support conditional editing of the table view.

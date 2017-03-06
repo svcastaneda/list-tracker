@@ -14,6 +14,9 @@
 		B3C347D61E55038600F5FC6B /* List_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C347D51E55038600F5FC6B /* List_TrackerTests.swift */; };
 		B3C347E11E55038600F5FC6B /* List_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C347E01E55038600F5FC6B /* List_TrackerUITests.swift */; };
 		F5763ABE1E6527900095B398 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5763ABD1E6527900095B398 /* ListViewController.swift */; };
+		F599AD421E6D0BEB00A43B14 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599AD411E6D0BEB00A43B14 /* Category.swift */; };
+		F599AD441E6D0BFE00A43B14 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599AD431E6D0BFE00A43B14 /* Task.swift */; };
+		F599AD4A1E6D18A300A43B14 /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599AD491E6D18A300A43B14 /* TasksTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		B3C347E01E55038600F5FC6B /* List_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List_TrackerUITests.swift; sourceTree = "<group>"; };
 		B3C347E21E55038600F5FC6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F5763ABD1E6527900095B398 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		F599AD411E6D0BEB00A43B14 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		F599AD431E6D0BFE00A43B14 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Task.swift; sourceTree = "<group>"; };
+		F599AD491E6D18A300A43B14 /* TasksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +103,15 @@
 		B3C347BF1E55038500F5FC6B /* List Tracker */ = {
 			isa = PBXGroup;
 			children = (
+				B3C347C91E55038500F5FC6B /* LaunchScreen.storyboard */,
 				B3C347C01E55038500F5FC6B /* AppDelegate.swift */,
 				B3C347C41E55038500F5FC6B /* Main.storyboard */,
 				F5763ABD1E6527900095B398 /* ListViewController.swift */,
+				F599AD491E6D18A300A43B14 /* TasksTableViewController.swift */,
 				B3C347C71E55038500F5FC6B /* Assets.xcassets */,
-				B3C347C91E55038500F5FC6B /* LaunchScreen.storyboard */,
 				B3C347CC1E55038500F5FC6B /* Info.plist */,
+				F599AD411E6D0BEB00A43B14 /* Category.swift */,
+				F599AD431E6D0BFE00A43B14 /* Task.swift */,
 			);
 			path = "List Tracker";
 			sourceTree = "<group>";
@@ -262,8 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F599AD441E6D0BFE00A43B14 /* Task.swift in Sources */,
+				F599AD4A1E6D18A300A43B14 /* TasksTableViewController.swift in Sources */,
 				B3C347C11E55038500F5FC6B /* AppDelegate.swift in Sources */,
 				F5763ABE1E6527900095B398 /* ListViewController.swift in Sources */,
+				F599AD421E6D0BEB00A43B14 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
