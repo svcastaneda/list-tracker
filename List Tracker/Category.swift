@@ -23,7 +23,7 @@ class Category {
     var title: String
     var timeframe: Timeframe = .inTheClear
     
-    init(title: String, timeframe: Timeframe) {
+    init(title: String) {
         self.title = title
     }
     
