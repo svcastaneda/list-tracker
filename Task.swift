@@ -8,10 +8,6 @@
 
 import Foundation
 
-var tasks: [Task] = [
-
-]
-
 class Task {
 
     enum Timeframe: String {

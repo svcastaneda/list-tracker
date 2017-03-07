@@ -20,15 +20,22 @@ class Category {
         case inTheClear = ""
     }
     
+    var tasks: [Task]
     var title: String
-    var timeframe: Timeframe = .inTheClear
+    var timeframe: Timeframe
     
     init(title: String) {
         self.title = title
+        self.tasks = []
+        self.timeframe = .inTheClear
     }
     
     func setTimeframe (to timeframe: Timeframe) {
         self.timeframe = timeframe
+    }
+    
+    func addTask(_ task: Task) {
+        tasks.append(task)
     }
 
 }

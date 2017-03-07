@@ -14,9 +14,11 @@ class ListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = "My Lists"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCategory))
         self.navigationItem.rightBarButtonItem = addButton
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -106,8 +108,16 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let category = categories[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-            
+        
+        /*******TODO*********/
+        // Need to somehow set a label to the cell and modify that.
+        // I'm thinking that would eliminate the need to change the
+        // text background and the cell layer background colors
         cell.textLabel?.text = category.title
+        cell.textLabel?.backgroundColor = UIColor.lightGray
+        cell.layer.backgroundColor = UIColor.lightGray.cgColor
+        cell.layer.borderWidth = 1.0
+        cell.layer.borderColor = UIColor.black.cgColor
         // Configure the cell...
 
         return cell
@@ -148,14 +158,21 @@ class ListViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        guard let tasksTableViewController = segue.destination as? TasksTableViewController
+            else { return }
+        guard let indexPath = self.tableView.indexPathForSelectedRow
+            else { return }
+        tasksTableViewController.category = categories[indexPath.row]
+        
     }
-    */
+    
 
 }

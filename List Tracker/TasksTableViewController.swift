@@ -10,16 +10,37 @@ import UIKit
 
 class TasksTableViewController: UITableViewController {
 
-    var data: [String] = ["Task 1", "Task 2", "Task 3"]
+    
+    @IBOutlet var table: UITableView!
+    
+    var category: Category?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "Tasks"
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTask))
+        self.navigationItem.rightBarButtonItem = addButton
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    }
+    
+    // Generate the popup that asks the user for new category name
+    func addTask() {
+        
+        /*********** TODO ************/
+        // All of this will need to go. We are going to navigate to a new view contoller to
+        // gather user input data. This is here for testing purposes - to make sure Para didn't
+        // ef up.
+        let title = "New Task: \(category?.tasks.count)"
+        self.category?.tasks.insert(Task(title: title, details: "", dueDate: Date()), at: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.table.insertRows(at: [indexPath], with: .automatic)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -36,20 +57,26 @@ class TasksTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return data.count
+        
+        var count = 0
+        if !(category?.tasks.isEmpty)! {
+            count = (category?.tasks.count)!
+        }
+        return count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let task = category?.tasks[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = data[indexPath.row]
+        cell.textLabel?.text = task?.title
         // Configure the cell...
 
         return cell
     }
-    
 
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
