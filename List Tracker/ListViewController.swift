@@ -74,6 +74,17 @@ class ListViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
 
+    // Enebles swipe to delete feature
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+    }
+    
+    // Removes deleted row from the categories list and deletes the row from the table
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+            categories.remove(at: indexPath.row)
+            table.deleteRows(at: [indexPath], with: .fade)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
