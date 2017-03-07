@@ -11,7 +11,6 @@ import UIKit
 class ListViewController: UITableViewController {
 
     @IBOutlet var table: UITableView!
-    var data: [String] = ["Category 1", "Category 2", "Category 3"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,12 +25,53 @@ class ListViewController: UITableViewController {
     }
     
     
-    /********** TODO ************/
+    // Generate the popup that asks the user for new category name
     func addCategory() {
-        let title = "New Category"
-        categories.insert(Category(title: title), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        table.insertRows(at: [indexPath], with: .automatic)
+        
+        let title = "New Category Name"
+        let message = ""
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "Add", style: .default) { action in
+            if let field = alertController.textFields?[0] {
+                if (field.text!.characters.count < 1) {
+                    self.invalidInputAlert()
+                    return
+                }
+                // save field
+                categories.insert(Category(title: field.text!), at: 0)
+                let indexPath = IndexPath(row: 0, section: 0)
+                self.table.insertRows(at: [indexPath], with: .automatic)
+            }
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "Category"
+        }
+        
+        alertController.addAction(confirmAction)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
+    // Remind the user to add a valid category name
+    func invalidInputAlert() {
+        
+        let title = "Missing Category Name"
+        let message = "Please enter a valid category name. Name must contain at least one letter."
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let confirmAction = UIAlertAction(title: "OK", style: .cancel) { action in
+            self.addCategory()
+        }
+        
+        alertController.addAction(confirmAction)
+        
+        present(alertController, animated: true, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {
