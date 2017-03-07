@@ -36,10 +36,13 @@ class TasksTableViewController: UITableViewController {
         // All of this will need to go. We are going to navigate to a new view contoller to
         // gather user input data. This is here for testing purposes - to make sure Para didn't
         // ef up.
-        let title = "New Task: \(category?.tasks.count)"
-        self.category?.tasks.insert(Task(title: title, details: "", dueDate: Date()), at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.table.insertRows(at: [indexPath], with: .automatic)
+//        let title = "New Task: \(category?.tasks.count)"
+//        self.category?.tasks.insert(Task(title: title, details: "", dueDate: Date()), at: 0)
+//        let indexPath = IndexPath(row: 0, section: 0)
+//        self.table.insertRows(at: [indexPath], with: .automatic)
+
+        let addNewTaskViewController = storyboard!.instantiateViewController(withIdentifier: "Add New Task") as UIViewController
+        self.navigationController?.pushViewController(addNewTaskViewController, animated: true)
         
     }
 
@@ -112,14 +115,15 @@ class TasksTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+    
     }
-    */
+    
 
 }

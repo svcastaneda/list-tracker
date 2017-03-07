@@ -17,6 +17,7 @@
 		F599AD421E6D0BEB00A43B14 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599AD411E6D0BEB00A43B14 /* Category.swift */; };
 		F599AD441E6D0BFE00A43B14 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599AD431E6D0BFE00A43B14 /* Task.swift */; };
 		F599AD4A1E6D18A300A43B14 /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599AD491E6D18A300A43B14 /* TasksTableViewController.swift */; };
+		F5D461801E6EF74A009BB690 /* AddNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4617F1E6EF74A009BB690 /* AddNewTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		F599AD411E6D0BEB00A43B14 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F599AD431E6D0BFE00A43B14 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Task.swift; sourceTree = "<group>"; };
 		F599AD491E6D18A300A43B14 /* TasksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
+		F5D4617F1E6EF74A009BB690 /* AddNewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				B3C347C91E55038500F5FC6B /* LaunchScreen.storyboard */,
 				B3C347C01E55038500F5FC6B /* AppDelegate.swift */,
 				B3C347C41E55038500F5FC6B /* Main.storyboard */,
+				F5D4617F1E6EF74A009BB690 /* AddNewTaskViewController.swift */,
 				F5763ABD1E6527900095B398 /* ListViewController.swift */,
 				F599AD491E6D18A300A43B14 /* TasksTableViewController.swift */,
 				B3C347C71E55038500F5FC6B /* Assets.xcassets */,
@@ -275,6 +278,7 @@
 				F599AD4A1E6D18A300A43B14 /* TasksTableViewController.swift in Sources */,
 				B3C347C11E55038500F5FC6B /* AppDelegate.swift in Sources */,
 				F5763ABE1E6527900095B398 /* ListViewController.swift in Sources */,
+				F5D461801E6EF74A009BB690 /* AddNewTaskViewController.swift in Sources */,
 				F599AD421E6D0BEB00A43B14 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
