@@ -29,23 +29,12 @@ class AddNewTaskViewController: UIViewController {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
     
-    
-    /********** TODO ***************/
-    // Clean up the button background colors. Green
-    // is too bright
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.borderWidth = 1.0
-        textView.layer.borderColor = UIColor.lightGray.cgColor
-        cancelButton.layer.borderWidth = 1.0
-        cancelButton.layer.borderColor = UIColor.lightGray.cgColor
-        cancelButton.layer.backgroundColor = UIColor.red.cgColor
-        addButton.layer.borderWidth = 1.0
-        addButton.layer.borderColor = UIColor.lightGray.cgColor
-        addButton.layer.backgroundColor = UIColor.green.cgColor
-        
+        textView.layer.borderColor = UIColor.lightGray.cgColor        
         // Do any additional setup after loading the view.
     }
 
