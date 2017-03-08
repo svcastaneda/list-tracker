@@ -30,7 +30,7 @@ class ListViewController: UITableViewController {
     // Generate the popup that asks the user for new category name
     func addCategory() {
         
-        let title = "New Category Name"
+        let title = "New List Name"
         let message = ""
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
@@ -50,7 +50,7 @@ class ListViewController: UITableViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         alertController.addTextField { textField in
-            textField.placeholder = "Category"
+            textField.placeholder = "Name"
         }
         
         alertController.addAction(confirmAction)
@@ -63,8 +63,8 @@ class ListViewController: UITableViewController {
     // Remind the user to add a valid category name
     func invalidInputAlert() {
         
-        let title = "Missing Category Name"
-        let message = "Please enter a valid category name. Name must contain at least one letter."
+        let title = "Missing List Name"
+        let message = "Please enter a valid list name. Name must contain at least one letter."
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let confirmAction = UIAlertAction(title: "OK", style: .cancel) { action in
