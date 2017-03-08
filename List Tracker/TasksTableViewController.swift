@@ -36,6 +36,7 @@ class TasksTableViewController: UITableViewController {
         // All of this will need to go. We are going to navigate to a new view contoller to
         // gather user input data. This is here for testing purposes - to make sure Para didn't
         // ef up.
+        
 //        let title = "New Task: \(category?.tasks.count)"
 //        self.category?.tasks.insert(Task(title: title, details: "", dueDate: Date()), at: 0)
 //        let indexPath = IndexPath(row: 0, section: 0)
