@@ -114,10 +114,6 @@ class ListViewController: UITableViewController {
         // I'm thinking that would eliminate the need to change the
         // text background and the cell layer background colors
         cell.textLabel?.text = category.title
-        cell.textLabel?.backgroundColor = UIColor.lightGray
-        cell.layer.backgroundColor = UIColor.lightGray.cgColor
-        cell.layer.borderWidth = 1.0
-        cell.layer.borderColor = UIColor.black.cgColor
         // Configure the cell...
 
         return cell
