@@ -47,7 +47,7 @@ class ListViewController: UITableViewController {
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive, handler: nil)
         
         alertController.addTextField { textField in
             textField.placeholder = "Name"
