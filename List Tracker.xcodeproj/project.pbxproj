@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		B3C347C11E55038500F5FC6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C347C01E55038500F5FC6B /* AppDelegate.swift */; };
-		B3C347C31E55038500F5FC6B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C347C21E55038500F5FC6B /* ViewController.swift */; };
 		B3C347C61E55038500F5FC6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C347C41E55038500F5FC6B /* Main.storyboard */; };
 		B3C347C81E55038500F5FC6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C347C71E55038500F5FC6B /* Assets.xcassets */; };
 		B3C347CB1E55038500F5FC6B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C347C91E55038500F5FC6B /* LaunchScreen.storyboard */; };
 		B3C347D61E55038600F5FC6B /* List_TrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C347D51E55038600F5FC6B /* List_TrackerTests.swift */; };
 		B3C347E11E55038600F5FC6B /* List_TrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C347E01E55038600F5FC6B /* List_TrackerUITests.swift */; };
+		F5763ABE1E6527900095B398 /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5763ABD1E6527900095B398 /* ListViewController.swift */; };
+		F599AD421E6D0BEB00A43B14 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599AD411E6D0BEB00A43B14 /* Category.swift */; };
+		F599AD441E6D0BFE00A43B14 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599AD431E6D0BFE00A43B14 /* Task.swift */; };
+		F599AD4A1E6D18A300A43B14 /* TasksTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F599AD491E6D18A300A43B14 /* TasksTableViewController.swift */; };
+		F5D461801E6EF74A009BB690 /* AddNewTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5D4617F1E6EF74A009BB690 /* AddNewTaskViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,6 @@
 /* Begin PBXFileReference section */
 		B3C347BD1E55038500F5FC6B /* List Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "List Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C347C01E55038500F5FC6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B3C347C21E55038500F5FC6B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		B3C347C51E55038500F5FC6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B3C347C71E55038500F5FC6B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3C347CA1E55038500F5FC6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +50,11 @@
 		B3C347DC1E55038600F5FC6B /* List TrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "List TrackerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C347E01E55038600F5FC6B /* List_TrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List_TrackerUITests.swift; sourceTree = "<group>"; };
 		B3C347E21E55038600F5FC6B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5763ABD1E6527900095B398 /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		F599AD411E6D0BEB00A43B14 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		F599AD431E6D0BFE00A43B14 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Task.swift; path = ../Task.swift; sourceTree = "<group>"; };
+		F599AD491E6D18A300A43B14 /* TasksTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksTableViewController.swift; sourceTree = "<group>"; };
+		F5D4617F1E6EF74A009BB690 /* AddNewTaskViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewTaskViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +105,16 @@
 		B3C347BF1E55038500F5FC6B /* List Tracker */ = {
 			isa = PBXGroup;
 			children = (
-				B3C347C01E55038500F5FC6B /* AppDelegate.swift */,
-				B3C347C21E55038500F5FC6B /* ViewController.swift */,
-				B3C347C41E55038500F5FC6B /* Main.storyboard */,
-				B3C347C71E55038500F5FC6B /* Assets.xcassets */,
 				B3C347C91E55038500F5FC6B /* LaunchScreen.storyboard */,
+				B3C347C01E55038500F5FC6B /* AppDelegate.swift */,
+				B3C347C41E55038500F5FC6B /* Main.storyboard */,
+				F5D4617F1E6EF74A009BB690 /* AddNewTaskViewController.swift */,
+				F5763ABD1E6527900095B398 /* ListViewController.swift */,
+				F599AD491E6D18A300A43B14 /* TasksTableViewController.swift */,
+				B3C347C71E55038500F5FC6B /* Assets.xcassets */,
 				B3C347CC1E55038500F5FC6B /* Info.plist */,
+				F599AD411E6D0BEB00A43B14 /* Category.swift */,
+				F599AD431E6D0BFE00A43B14 /* Task.swift */,
 			);
 			path = "List Tracker";
 			sourceTree = "<group>";
@@ -262,8 +274,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3C347C31E55038500F5FC6B /* ViewController.swift in Sources */,
+				F599AD441E6D0BFE00A43B14 /* Task.swift in Sources */,
+				F599AD4A1E6D18A300A43B14 /* TasksTableViewController.swift in Sources */,
 				B3C347C11E55038500F5FC6B /* AppDelegate.swift in Sources */,
+				F5763ABE1E6527900095B398 /* ListViewController.swift in Sources */,
+				F5D461801E6EF74A009BB690 /* AddNewTaskViewController.swift in Sources */,
+				F599AD421E6D0BEB00A43B14 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +429,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = MQ79U7S5FQ;
 				INFOPLIST_FILE = "List Tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -426,6 +443,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = MQ79U7S5FQ;
 				INFOPLIST_FILE = "List Tracker/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -512,6 +530,7 @@
 				B3C347E71E55038600F5FC6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B3C347E81E55038600F5FC6B /* Build configuration list for PBXNativeTarget "List TrackerTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +539,7 @@
 				B3C347EA1E55038600F5FC6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B3C347EB1E55038600F5FC6B /* Build configuration list for PBXNativeTarget "List TrackerUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +548,7 @@
 				B3C347ED1E55038600F5FC6B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
