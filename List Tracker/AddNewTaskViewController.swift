@@ -8,18 +8,6 @@
 
 import UIKit
 
-
-/************* TODO ****************/
-/*
- 
- Need to implement the ability to create a new task, and return
- task and row object. EX. Prepare for segue.
- Implement button features.
- Implement date.
- Assign ta
- 
- */
-
 protocol NewTaskProtocol {
     func setTask(to task: Task)
 }
@@ -28,6 +16,7 @@ protocol NewTaskProtocol {
 
 class AddNewTaskViewController: UIViewController {
     
+    var date: Date?
     var task: Task?
     var delegate: NewTaskProtocol?
 
@@ -36,13 +25,19 @@ class AddNewTaskViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
+    @IBOutlet weak var dueDateLabel: UIButton!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    var dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         textField.layer.borderWidth = 1.0
         textField.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.borderWidth = 1.0
-        textView.layer.borderColor = UIColor.lightGray.cgColor        
+        textView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        dateFormatter.dateFormat = "MM/dd/YYYY"
         // Do any additional setup after loading the view.
     }
 
@@ -50,11 +45,25 @@ class AddNewTaskViewController: UIViewController {
         textField.resignFirstResponder()
     }
     
+    @IBAction func dueDatePressed(_ sender: UIButton) {
+        datePicker.isHidden = false
+    }
+    
+    @IBAction func datePickerChange(sender: UIDatePicker) {
+        let buttonTitle = dateFormatter.string(from: sender.date)
+        dueDateLabel.setTitle(buttonTitle, for: .normal)
+    }
+    
+    @IBAction func selectionEnded(_ sender: UIDatePicker) {
+        datePicker.isHidden = true
+    }
+    
+    // Creates and returns the tasks. Pops view controller on completion
     @IBAction func addButtonPressed(_ sender: UIButton) {
         if textField.text! != "" {
             let title = textField.text
             let details = textView.text
-            task = Task(title: title!, details: details!, dueDate: Date())
+            task = Task(title: title!, details: details!, dueDate: datePicker.date)
             delegate?.setTask(to: task!)
             self.navigationController?.popViewController(animated: true)
         }
