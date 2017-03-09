@@ -20,8 +20,16 @@ import UIKit
  
  */
 
+protocol NewTaskProtocol {
+    func setTask(to task: Task)
+}
+
+
 
 class AddNewTaskViewController: UIViewController {
+    
+    var task: Task?
+    var delegate: NewTaskProtocol?
 
     @IBOutlet weak var taskTitle: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -38,11 +46,22 @@ class AddNewTaskViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func addButtonPressed(_ sender: UIButton) {
-        
-        self.navigationController?.popViewController(animated: true)
+    @IBAction func editEnded(_ sender: UITextField) {
+        textField.resignFirstResponder()
     }
     
+    @IBAction func addButtonPressed(_ sender: UIButton) {
+        if textField.text! != "" {
+            let title = textField.text
+            let details = textView.text
+            task = Task(title: title!, details: details!, dueDate: Date())
+            delegate?.setTask(to: task!)
+            self.navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
+    // Complete
     @IBAction func cancelButtonPressed(_ sender: UIButton) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -54,12 +73,14 @@ class AddNewTaskViewController: UIViewController {
     }
     
     // MARK: - Navigation
-
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+            
     }
- 
+    */
 
 }
