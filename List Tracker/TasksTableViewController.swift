@@ -118,12 +118,17 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
 
     
     // MARK: - Navigation
-    /*
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        guard let taskViewController = segue.destination as? TaskViewController
+            else { return }
+        guard let indexPath = self.tableView.indexPathForSelectedRow
+            else { return }
+        taskViewController.task = category?.tasks[indexPath.row]
     }
-    */
+    
 
 }
