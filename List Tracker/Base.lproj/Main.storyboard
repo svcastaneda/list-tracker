@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Categories View-->
+        <!--List View-->
         <scene sceneID="hcA-su-6Wh">
             <objects>
-                <tableViewController title="Categories View" id="9kK-uu-88O" customClass="ListViewController" customModule="List_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController title="List View" id="9kK-uu-88O" customClass="ListViewController" customModule="List_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="qrc-vs-UPE">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,13 +51,15 @@
         <!--Tasks Table View Controller-->
         <scene sceneID="eKT-3j-cMR">
             <objects>
-                <tableViewController id="6ms-b3-3rc" customClass="TasksTableViewController" customModule="List_Tracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LVR-BU-fsw">
+                <tableViewController storyboardIdentifier="Tasks" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6ms-b3-3rc" customClass="TasksTableViewController" customModule="List_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LVR-BU-fsw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="eAe-Fh-gky">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="cell" id="eAe-Fh-gky">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eAe-Fh-gky" id="o5j-SO-K1X">
@@ -75,7 +77,6 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="table" destination="LVR-BU-fsw" id="uVL-df-lqQ"/>
                     </connections>
@@ -84,10 +85,10 @@
             </objects>
             <point key="canvasLocation" x="1292" y="-76"/>
         </scene>
-        <!--Add New Task-->
+        <!--Add New Task View Controller-->
         <scene sceneID="TB0-cr-M7c">
             <objects>
-                <viewController storyboardIdentifier="Add New Task" title="Add New Task" id="VPU-Bg-0rq" customClass="AddNewTaskViewController" customModule="List_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Add New Task" id="VPU-Bg-0rq" customClass="AddNewTaskViewController" customModule="List_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xTo-aX-ls4"/>
                         <viewControllerLayoutGuide type="bottom" id="p2W-2m-3i6"/>
@@ -128,6 +129,9 @@
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="yes" spellCheckingType="yes" returnKeyType="done"/>
+                                        <connections>
+                                            <action selector="editEnded:" destination="VPU-Bg-0rq" eventType="editingDidEndOnExit" id="ys4-go-QeS"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
@@ -222,9 +226,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Task Detail View" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i49-fO-yBG">
-                                <rect key="frame" x="16" y="64" width="343" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i49-fO-yBG">
+                                <rect key="frame" x="16" y="64" width="343" height="29"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>

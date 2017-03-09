@@ -8,12 +8,12 @@
 
 import UIKit
 
-class TasksTableViewController: UITableViewController {
-
+class TasksTableViewController: UITableViewController, NewTaskProtocol {
     
     @IBOutlet var table: UITableView!
     
     var category: Category?
+    var task: Task?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,32 +21,26 @@ class TasksTableViewController: UITableViewController {
         self.title = "Tasks"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTask))
         self.navigationItem.rightBarButtonItem = addButton
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
     
     // Generate the popup that asks the user for new category name
     func addTask() {
-        
-        /*********** TODO ************/
-        // All of this will need to go. We are going to navigate to a new view contoller to
-        // gather user input data. This is here for testing purposes - to make sure Para didn't
-        // ef up.
-        
-//        let title = "New Task: \(category?.tasks.count)"
-//        self.category?.tasks.insert(Task(title: title, details: "", dueDate: Date()), at: 0)
-//        let indexPath = IndexPath(row: 0, section: 0)
-//        self.table.insertRows(at: [indexPath], with: .automatic)
-
-        let addNewTaskViewController = storyboard!.instantiateViewController(withIdentifier: "Add New Task") as UIViewController
-        self.navigationController?.pushViewController(addNewTaskViewController, animated: true)
-        
+        let newTaskViewController = storyboard!.instantiateViewController(withIdentifier: "Add New Task") as! AddNewTaskViewController
+        newTaskViewController.delegate = self
+        self.navigationController?.pushViewController(newTaskViewController, animated: true)
     }
-
+    
+    // Enables swipe to delete feature
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+    }
+    
+    // Removes deleted row from the categories list and deletes the row from the table
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        category?.tasks.remove(at: indexPath.row)
+        table.deleteRows(at: [indexPath], with: .fade)
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -79,7 +73,13 @@ class TasksTableViewController: UITableViewController {
 
         return cell
     }
-
+    
+    func setTask(to task: Task) {
+        self.category?.tasks.insert(task, at: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
+        self.table.insertRows(at: [indexPath], with: .automatic)
+        
+    }
     
     /*
     // Override to support conditional editing of the table view.
@@ -118,13 +118,12 @@ class TasksTableViewController: UITableViewController {
 
     
     // MARK: - Navigation
-
+    /*
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-    
     }
-    
+    */
 
 }
