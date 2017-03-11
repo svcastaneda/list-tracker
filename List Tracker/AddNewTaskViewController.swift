@@ -45,6 +45,13 @@ class AddNewTaskViewController: UIViewController {
         textField.resignFirstResponder()
     }
     
+    @IBAction func backgroundTouched(_ sender: UIControl) {
+        textField.resignFirstResponder()
+        textView.resignFirstResponder()
+        datePicker.resignFirstResponder()
+        datePicker.isHidden = true
+    }
+    
     @IBAction func dueDatePressed(_ sender: UIButton) {
         datePicker.isHidden = false
     }
