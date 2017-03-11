@@ -15,8 +15,12 @@ class TaskViewController: UIViewController {
     @IBOutlet weak var dueDateLabel: UILabel!
     @IBOutlet weak var detailsText: UITextView!
     
+     var dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        dateFormatter.dateFormat = "MM/dd/YYYY"
         // Do any additional setup after loading the view.
     }
 
@@ -28,7 +32,8 @@ class TaskViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let t = task {
             navigationItem.title = t.title
-            dueDateLabel.text = t.dueDate.description
+            let dateString = dateFormatter.string(from: t.dueDate)
+            dueDateLabel.text = "Due: \(dateString)"
             detailsText.text = t.details
         }
     }
