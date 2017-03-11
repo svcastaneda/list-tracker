@@ -93,11 +93,11 @@
                         <viewControllerLayoutGuide type="top" id="xTo-aX-ls4"/>
                         <viewControllerLayoutGuide type="bottom" id="p2W-2m-3i6"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ord-rU-ZPC">
+                    <view key="view" contentMode="scaleToFill" id="ord-rU-ZPC" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8K-UI-YSW">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f8K-UI-YSW" customClass="UIControl">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C2P-if-Vk3">
@@ -114,6 +114,9 @@
                                     <constraint firstItem="C2P-if-Vk3" firstAttribute="leading" secondItem="f8K-UI-YSW" secondAttribute="leading" id="j2l-ub-oC2"/>
                                     <constraint firstAttribute="height" constant="65" id="z1M-4N-bJy"/>
                                 </constraints>
+                                <connections>
+                                    <action selector="backgroundTouched:" destination="VPU-Bg-0rq" eventType="valueChanged" id="yPR-jB-Ndl"/>
+                                </connections>
                             </view>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="hWI-im-1oC">
                                 <rect key="frame" x="16" y="80" width="343" height="30"/>
@@ -229,6 +232,9 @@
                             <constraint firstItem="UEk-Fz-xaU" firstAttribute="leading" secondItem="ord-rU-ZPC" secondAttribute="leadingMargin" id="ufC-Nu-3cM"/>
                             <constraint firstItem="5E0-tJ-laj" firstAttribute="top" secondItem="p59-kA-ISH" secondAttribute="bottom" constant="8" id="xCV-Dr-Q3f"/>
                         </constraints>
+                        <connections>
+                            <action selector="backgroundTouched:" destination="VPU-Bg-0rq" eventType="touchDown" id="5AZ-c5-ykc"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="addButton" destination="EKZ-ZY-bfL" id="Tvo-ck-7Xw"/>
@@ -252,11 +258,11 @@
                         <viewControllerLayoutGuide type="top" id="Zbu-k6-sxK"/>
                         <viewControllerLayoutGuide type="bottom" id="kEE-qc-FfP"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Q4u-6s-x7T">
+                    <view key="view" contentMode="scaleToFill" id="Q4u-6s-x7T" customClass="UIControl">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Due Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i49-fO-yBG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Due Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i49-fO-yBG">
                                 <rect key="frame" x="21" y="79" width="338" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -279,6 +285,9 @@
                             <constraint firstItem="BsC-0J-ixI" firstAttribute="top" secondItem="i49-fO-yBG" secondAttribute="bottom" constant="20" id="vMD-lL-V4n"/>
                             <constraint firstItem="BsC-0J-ixI" firstAttribute="trailing" secondItem="Q4u-6s-x7T" secondAttribute="trailingMargin" id="wI2-y1-Hyr"/>
                         </constraints>
+                        <connections>
+                            <action selector="backgroundTouched:" destination="LaO-1b-cbs" eventType="touchDown" id="kB2-hu-g6M"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" id="IaU-Dz-f81"/>
                     <connections>

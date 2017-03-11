@@ -17,6 +17,10 @@ class TaskViewController: UIViewController {
     
      var dateFormatter = DateFormatter()
     
+    @IBAction func backgroundTouched(_ sender: UIControl) {
+        detailsText.resignFirstResponder()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,8 +47,7 @@ class TaskViewController: UIViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
     }
     */
 
