@@ -44,6 +44,7 @@ class ListViewController: UITableViewController {
         
         alertController.addTextField { textField in
             textField.placeholder = "Name"
+            textField.autocapitalizationType = UITextAutocapitalizationType.words
         }
         
         alertController.addAction(confirmAction)
