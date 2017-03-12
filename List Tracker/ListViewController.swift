@@ -18,14 +18,7 @@ class ListViewController: UITableViewController {
         self.title = "My Lists"
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCategory))
         self.navigationItem.rightBarButtonItem = addButton
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
-    
     
     // Generate the popup that asks the user for new category name
     func addCategory() {
@@ -76,7 +69,7 @@ class ListViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
 
-    // Enebles swipe to delete feature
+    // Enables swipe to delete feature
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
     }
