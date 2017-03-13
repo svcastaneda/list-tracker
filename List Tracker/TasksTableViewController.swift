@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class TasksTableViewController: UITableViewController, NewTaskProtocol {
     
@@ -20,7 +21,8 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
         
         self.title = category?.title
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTask))
-        self.navigationItem.rightBarButtonItem = addButton
+        let shareButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(shareList))
+        self.navigationItem.rightBarButtonItems = [addButton, shareButton]
     }
     
     // Generate the popup that asks the user for new category name
@@ -29,6 +31,12 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
         newTaskViewController.delegate = self
         self.navigationController?.pushViewController(newTaskViewController, animated: true)
     }
+    
+    func shareList() {
+        
+    }
+    
+    
     
     // Enables swipe to delete feature
     override func setEditing(_ editing: Bool, animated: Bool) {
