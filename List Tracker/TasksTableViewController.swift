@@ -18,7 +18,7 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Tasks"
+        self.title = category?.title
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTask))
         self.navigationItem.rightBarButtonItem = addButton
     }
