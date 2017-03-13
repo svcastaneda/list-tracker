@@ -18,19 +18,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="wkO-Vf-jET">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="UfO-2g-3xF">
                             <rect key="frame" x="0.0" y="72" width="375" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="cell" id="tlu-CT-8z5">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tlu-CT-8z5" id="INw-B8-HDK">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -56,14 +57,14 @@
         <!--Tasks Table View Controller-->
         <scene sceneID="eKT-3j-cMR">
             <objects>
-                <tableViewController storyboardIdentifier="Tasks" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6ms-b3-3rc" customClass="TasksTableViewController" customModule="List_Tracker" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="6ms-b3-3rc" customClass="TasksTableViewController" customModule="List_Tracker" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="LVR-BU-fsw">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.49803921579999999" green="0.49803921579999999" blue="0.49803921579999999" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                        <view key="tableFooterView" contentMode="scaleToFill" id="pSy-dL-g7m">
+                        <view key="tableFooterView" contentMode="scaleToFill" id="Kne-Nr-WkL">
                             <rect key="frame" x="0.0" y="72" width="375" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -73,9 +74,10 @@
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eAe-Fh-gky" id="o5j-SO-K1X">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.65029359350487315" green="0.82577556371688843" blue="0.63049800193676853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <segue destination="LaO-1b-cbs" kind="show" id="exG-Xu-Ilo"/>
                                 </connections>
@@ -273,27 +275,27 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Due Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i49-fO-yBG">
-                                <rect key="frame" x="21" y="79" width="338" height="17"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="28" y="80" width="323" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="No Details" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BsC-0J-ixI">
-                                <rect key="frame" x="16" y="116" width="343" height="531"/>
+                                <rect key="frame" x="24" y="124" width="327" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="i49-fO-yBG" firstAttribute="top" secondItem="Zbu-k6-sxK" secondAttribute="bottom" constant="15" id="1FW-LK-Efj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="i49-fO-yBG" secondAttribute="trailing" id="FTV-dC-QTf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="i49-fO-yBG" secondAttribute="trailing" constant="8" id="FTV-dC-QTf"/>
                             <constraint firstItem="kEE-qc-FfP" firstAttribute="top" secondItem="BsC-0J-ixI" secondAttribute="bottom" constant="20" id="XAV-qR-cs3"/>
-                            <constraint firstItem="BsC-0J-ixI" firstAttribute="leading" secondItem="Q4u-6s-x7T" secondAttribute="leadingMargin" id="YrM-AK-1Cw"/>
-                            <constraint firstItem="i49-fO-yBG" firstAttribute="leading" secondItem="Q4u-6s-x7T" secondAttribute="leadingMargin" constant="5" id="jfW-Bv-IOQ"/>
+                            <constraint firstItem="BsC-0J-ixI" firstAttribute="leading" secondItem="Q4u-6s-x7T" secondAttribute="leadingMargin" constant="8" id="YrM-AK-1Cw"/>
+                            <constraint firstItem="i49-fO-yBG" firstAttribute="top" secondItem="Zbu-k6-sxK" secondAttribute="bottom" constant="16" id="aQK-1D-ohD"/>
+                            <constraint firstItem="i49-fO-yBG" firstAttribute="leading" secondItem="Q4u-6s-x7T" secondAttribute="leadingMargin" constant="12" id="jfW-Bv-IOQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="BsC-0J-ixI" secondAttribute="trailing" constant="8" id="p4u-zv-le8"/>
                             <constraint firstItem="BsC-0J-ixI" firstAttribute="top" secondItem="i49-fO-yBG" secondAttribute="bottom" constant="20" id="vMD-lL-V4n"/>
-                            <constraint firstItem="BsC-0J-ixI" firstAttribute="trailing" secondItem="Q4u-6s-x7T" secondAttribute="trailingMargin" id="wI2-y1-Hyr"/>
                         </constraints>
                         <connections>
                             <action selector="backgroundTouched:" destination="LaO-1b-cbs" eventType="touchDown" id="kB2-hu-g6M"/>
@@ -307,7 +309,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Go1-Mi-S8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2137" y="-76"/>
+            <point key="canvasLocation" x="2136.8000000000002" y="-76.011994002998506"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WEE-cE-AJ3">
