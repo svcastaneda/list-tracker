@@ -9,7 +9,7 @@
 import UIKit
 
 protocol NewTaskProtocol {
-    func setTask(to task: Task)
+    func setTask(title: String, details: String, dueDate: Date)
 }
 
 
@@ -72,8 +72,9 @@ class AddNewTaskViewController: UIViewController {
         if textField.text! != "" {
             let title = textField.text
             let details = textView.text
-            task = Task(title: title!, details: details!, dueDate: datePicker.date)
-            delegate?.setTask(to: task!)
+            let dueDate = datePicker.date
+            
+            delegate?.setTask(title: title!, details: details!, dueDate: dueDate)
             self.navigationController?.popViewController(animated: true)
         }
         
