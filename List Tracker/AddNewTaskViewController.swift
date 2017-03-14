@@ -25,46 +25,70 @@ class AddNewTaskViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var addButton: UIButton!
-    @IBOutlet weak var dueDateLabel: UIButton!
-    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var dueDateField: UITextField!
+    
+    let datePicker = UIDatePicker()
     
     var dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        textField.layer.borderWidth = 1.0
-        textField.layer.borderColor = UIColor.lightGray.cgColor
         textView.layer.borderWidth = 1.0
         textView.layer.borderColor = UIColor.lightGray.cgColor
+        textView.layer.cornerRadius = 5.0
+        addButton.layer.cornerRadius = 5.0
+        cancelButton.layer.cornerRadius = 5.0
         
-        dateFormatter.dateFormat = "MM/dd/YYYY"
         // Do any additional setup after loading the view.
-    }
-
-    @IBAction func editEnded(_ sender: UITextField) {
-        textField.resignFirstResponder()
-    }
-    
-    @IBAction func backgroundTouched(_ sender: UIControl) {
-        textField.resignFirstResponder()
-        textView.resignFirstResponder()
-        datePicker.resignFirstResponder()
-        datePicker.isHidden = true
-    }
-    
-    @IBAction func dueDatePressed(_ sender: UIButton) {
-        textField.resignFirstResponder()
-        textView.resignFirstResponder()
-        datePicker.isHidden = false
+        
+        
+        
+        createDatePicker()
+        addToolbars()
+        
+        let today = Date()
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        dueDateField.text = formatter.string(from: today)
     }
     
-    @IBAction func datePickerChange(sender: UIDatePicker) {
-        let buttonTitle = dateFormatter.string(from: sender.date)
-        dueDateLabel.setTitle(buttonTitle, for: .normal)
+    func addToolbars() {
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        let dateToolbar = UIToolbar()
+        dateToolbar.sizeToFit()
+        
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.donePressed))
+        let dateDoneButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.done, target: self, action: #selector(self.dateDonePressed))
+        
+        toolbar.setItems([flexSpace, doneButton], animated: true)
+        dateToolbar.setItems([flexSpace, dateDoneButton], animated: true)
+        
+        textField.inputAccessoryView = toolbar
+        textView.inputAccessoryView = toolbar
+        dueDateField.inputAccessoryView = dateToolbar
+        
+        dueDateField.inputView = datePicker
     }
     
-    @IBAction func selectionEnded(_ sender: UIDatePicker) {
-        datePicker.isHidden = true
+    func donePressed() {
+        self.view.endEditing(true)
+    }
+    
+    func dateDonePressed() {
+        let formattedDate = DateFormatter()
+        formattedDate.dateStyle = .medium
+        formattedDate.timeStyle = .none
+        
+        dueDateField.text = formattedDate.string(from: datePicker.date)
+        
+        self.view.endEditing(true)
+    }
+    
+    func createDatePicker() {
+        datePicker.datePickerMode = .date
+        dueDateField.text = "\(datePicker.date)"
     }
     
     // Creates and returns the tasks. Pops view controller on completion
