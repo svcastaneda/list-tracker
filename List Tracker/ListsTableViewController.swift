@@ -7,10 +7,30 @@
 //
 
 import UIKit
+import CoreData
+
+var categories: [Category] = []
 
 class ListViewController: UITableViewController {
 
     @IBOutlet var table: UITableView!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<Category>(entityName: "Category")
+        
+        do {
+            categories = try managedContext.fetch(fetchRequest)
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,9 +54,8 @@ class ListViewController: UITableViewController {
                     return
                 }
                 // save field
-                categories.insert(Category(title: field.text!), at: 0)
-                let indexPath = IndexPath(row: 0, section: 0)
-                self.table.insertRows(at: [indexPath], with: .automatic)
+                self.save(title: field.text!)
+                self.table.reloadData()
             }
         }
         
@@ -77,8 +96,20 @@ class ListViewController: UITableViewController {
     
     // Removes deleted row from the categories list and deletes the row from the table
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-            categories.remove(at: indexPath.row)
-            table.deleteRows(at: [indexPath], with: .fade)
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        let category = categories[indexPath.row]
+        
+        managedContext.delete(category)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        categories.remove(at: indexPath.row)
+        table.deleteRows(at: [indexPath], with: .fade)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -103,14 +134,33 @@ class ListViewController: UITableViewController {
         let category = categories[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        /*******TODO*********/
-        // Need to somehow set a label to the cell and modify that.
-        // I'm thinking that would eliminate the need to change the
-        // text background and the cell layer background colors
-        cell.textLabel?.text = category.title
+        cell.textLabel?.text = category.value(forKeyPath: "title") as? String
         // Configure the cell...
 
         return cell
+    }
+    
+    func save(title: String) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Category", in: managedContext)!
+        
+        let category = Category(entity: entity, insertInto: managedContext)
+        
+        category.setValue(title, forKeyPath: "title")
+        
+        categories.append(category)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+        
     }
 
     /*
