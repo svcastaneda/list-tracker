@@ -36,10 +36,30 @@ class TaskViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let t = task {
             navigationItem.title = t.title
-            let dateString = dateFormatter.string(from: t.dueDate)
+            let dateString = dateFormatter.string(from: t.dueDate as! Date)
             dueDateLabel.text = "Due: \(dateString)"
             detailsText.text = t.details
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+    
+        if let detailsEdited = detailsText.text {
+            task?.details = detailsEdited
+        }
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    
     }
     
     /*
