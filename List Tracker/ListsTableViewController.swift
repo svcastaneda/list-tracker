@@ -34,10 +34,10 @@ class ListViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.title = "My Lists"
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCategory))
-        self.navigationItem.rightBarButtonItem = addButton
+    }
+    
+    @IBAction func addList(_ sender: UIBarButtonItem) {
+        addCategory()
     }
     
     // Generate the popup that asks the user for new category name

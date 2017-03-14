@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B341D2651E77D6E0004B11C4 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B341D2641E77D6E0004B11C4 /* MessageUI.framework */; };
 		B3C347C11E55038500F5FC6B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C347C01E55038500F5FC6B /* AppDelegate.swift */; };
 		B3C347C61E55038500F5FC6B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3C347C41E55038500F5FC6B /* Main.storyboard */; };
 		B3C347C81E55038500F5FC6B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C347C71E55038500F5FC6B /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B341D2641E77D6E0004B11C4 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		B3C347BD1E55038500F5FC6B /* List Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "List Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C347C01E55038500F5FC6B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3C347C51E55038500F5FC6B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B341D2651E77D6E0004B11C4 /* MessageUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +85,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B341D2631E77D6E0004B11C4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B341D2641E77D6E0004B11C4 /* MessageUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B3C347B41E55038500F5FC6B = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +100,7 @@
 				B3C347D41E55038600F5FC6B /* List TrackerTests */,
 				B3C347DF1E55038600F5FC6B /* List TrackerUITests */,
 				B3C347BE1E55038500F5FC6B /* Products */,
+				B341D2631E77D6E0004B11C4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

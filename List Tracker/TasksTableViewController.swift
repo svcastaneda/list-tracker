@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import MessageUI
 import CoreData
 
-class TasksTableViewController: UITableViewController, NewTaskProtocol {
+class TasksTableViewController: UITableViewController, NewTaskProtocol, MFMessageComposeViewControllerDelegate {
     
     @IBOutlet var table: UITableView!
     
@@ -20,9 +21,12 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
         super.viewDidLoad()
         
         self.title = category?.title
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTask))
-        self.navigationItem.rightBarButtonItem = addButton
     }
+    
+    @IBAction func addTaskButtonPressed(_ sender: UIBarButtonItem) {
+        addTask()
+    }
+    
     
     // Generate the popup that asks the user for new category name
     func addTask() {
@@ -30,6 +34,28 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
         newTaskViewController.delegate = self
         self.navigationController?.pushViewController(newTaskViewController, animated: true)
     }
+    
+    
+    // MESSAGING
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func shareListButtonPressed(_ sender: UIBarButtonItem) {
+        if MFMessageComposeViewController.canSendText() {
+            let controller = MFMessageComposeViewController()
+            let message = category?.tasks?.array.flatMap({
+                (t) -> String in (t as! Task).title!
+            })
+            
+            controller.body = (category?.title)! + ": " + (message?.joined(separator: ", "))!
+            controller.recipients = []
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
+    
     
     // Enables swipe to delete feature
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -162,6 +188,5 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
             else { return }
         taskViewController.task = category?.tasks![indexPath.row] as? Task
     }
-    
 
 }
