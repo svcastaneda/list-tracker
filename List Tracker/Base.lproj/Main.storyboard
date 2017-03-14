@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -45,7 +46,13 @@
                             <outlet property="delegate" destination="9kK-uu-88O" id="n86-go-Aub"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="Fk6-nJ-G6H"/>
+                    <navigationItem key="navigationItem" title="My Lists" id="Fk6-nJ-G6H">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QKk-AZ-l6F">
+                            <connections>
+                                <action selector="addList:" destination="9kK-uu-88O" id="YzK-nj-KiD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="table" destination="qrc-vs-UPE" id="08Q-nN-4GG"/>
                     </connections>
@@ -54,7 +61,7 @@
             </objects>
             <point key="canvasLocation" x="389.60000000000002" y="-76.011994002998506"/>
         </scene>
-        <!--Tasks Table View Controller-->
+        <!--Title-->
         <scene sceneID="eKT-3j-cMR">
             <objects>
                 <tableViewController id="6ms-b3-3rc" customClass="TasksTableViewController" customModule="List_Tracker" customModuleProvider="target" sceneMemberID="viewController">
@@ -70,14 +77,14 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" indentationWidth="10" reuseIdentifier="cell" id="eAe-Fh-gky">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="cell" id="eAe-Fh-gky">
                                 <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="eAe-Fh-gky" id="o5j-SO-K1X">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="342" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.65029359350487315" green="0.82577556371688843" blue="0.63049800193676853" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.80000000000000004" green="0.80000000000000004" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="LaO-1b-cbs" kind="show" id="exG-Xu-Ilo"/>
                                 </connections>
@@ -89,6 +96,20 @@
                         </connections>
                     </tableView>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Title" id="d5U-Wg-sNP">
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="A4v-jp-ZXX">
+                                <connections>
+                                    <action selector="addTaskButtonPressed:" destination="6ms-b3-3rc" id="Auh-xu-zdv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="action" id="Ifz-W2-FgO">
+                                <connections>
+                                    <action selector="shareListButtonPressed:" destination="6ms-b3-3rc" id="yPq-uR-oe9"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="table" destination="LVR-BU-fsw" id="uVL-df-lqQ"/>
                     </connections>
@@ -301,7 +322,7 @@
                             <action selector="backgroundTouched:" destination="LaO-1b-cbs" eventType="touchDown" id="kB2-hu-g6M"/>
                         </connections>
                     </view>
-                    <navigationItem key="navigationItem" id="IaU-Dz-f81"/>
+                    <navigationItem key="navigationItem" title="Title" id="431-Ej-wpa"/>
                     <connections>
                         <outlet property="detailsText" destination="BsC-0J-ixI" id="DxI-K7-X3U"/>
                         <outlet property="dueDateLabel" destination="i49-fO-yBG" id="NVK-CO-aE1"/>
