@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        self.window?.rootViewController?.dismiss(animated: false, completion: nil)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -40,7 +42,73 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    enum ShortcutId: String {
+        case Home
+        case NewList
+        
+        init?(fullType: String) {
+            guard let last = fullType.components(separatedBy: ".").last else {return nil}
+            self.init(rawValue: last)
+        }
+        
+        var type: String {
+            return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
+        }
+    }
+    
+    func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        var handled = false
+        
+        guard ShortcutId(fullType: shortcutItem.type) != nil else { return false }
+        guard let shortcutType = shortcutItem.type as String? else { return false }
+        
+        switch (shortcutType) {
+            case ShortcutId.Home.type:
+                handled = true
+                
+                let storyboard = UIStoryboard(name: "Home", bundle: nil)
+                let navVC = storyboard.instantiateViewController(withIdentifier: "listViewController") as! ListViewController
+                self.window?.rootViewController?.present(navVC, animated: true, completion: nil)
+                
+                break
+            
+            case ShortcutId.NewList.type: break
+            default: break
+        }
+        
+        return handled
+    }
+    
+    
+    func application(_ application: UIApplication,
+                     performActionFor shortcutItem: UIApplicationShortcutItem,
+                     completionHandler: @escaping (Bool) -> Void) {
+        let handledShortcutItem = self.handleShortcutItem(shortcutItem: shortcutItem)
+        completionHandler(handledShortcutItem)
+    }
 
-
+    lazy var persistentContainer: NSPersistentContainer = {
+        
+        let container = NSPersistentContainer(name: "List Tracker")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
 }
 

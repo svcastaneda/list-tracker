@@ -8,6 +8,7 @@
 
 import UIKit
 import MessageUI
+import CoreData
 
 class TasksTableViewController: UITableViewController, NewTaskProtocol {
     
@@ -45,8 +46,17 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
     
     // Removes deleted row from the categories list and deletes the row from the table
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        category?.tasks.remove(at: indexPath.row)
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        managedContext.delete(category?.tasks![indexPath.row] as! Task)
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
         table.deleteRows(at: [indexPath], with: .fade)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -64,28 +74,51 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-        var count = 0
-        if !(category?.tasks.isEmpty)! {
-            count = (category?.tasks.count)!
+        if let count = category?.tasks?.count {
+            return count
         }
-        return count
+        return 0
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let task = category?.tasks[indexPath.row]
+        
+        let task = category?.tasks![indexPath.row] as! Task
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
-        cell.textLabel?.text = task?.title
+        cell.textLabel?.text = task.title
         // Configure the cell...
 
         return cell
     }
     
-    func setTask(to task: Task) {
-        self.category?.tasks.insert(task, at: 0)
-        let indexPath = IndexPath(row: 0, section: 0)
-        self.table.insertRows(at: [indexPath], with: .automatic)
+    func setTask(title: String, details: String, dueDate: Date) {
+        self.createTask(title: title, details: details, dueDate: dueDate)
+        self.table.reloadData()
+    }
+    
+    func createTask(title: String, details: String, dueDate: Date) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
+            return
+        }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Task", in: managedContext)!
+        
+        let task = Task(entity: entity, insertInto: managedContext)
+        
+        task.setValue(title, forKey: "title")
+        task.setValue(details, forKey: "details")
+        task.setValue(dueDate, forKey: "dueDate")
+        
+        category?.addToTasks(task)
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
         
     }
     
@@ -135,7 +168,7 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
             else { return }
         guard let indexPath = self.tableView.indexPathForSelectedRow
             else { return }
-        taskViewController.task = category?.tasks[indexPath.row]
+        taskViewController.task = category?.tasks![indexPath.row] as? Task
     }
     
 
