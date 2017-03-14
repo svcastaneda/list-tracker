@@ -42,50 +42,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-    
-    enum ShortcutId: String {
-        case Home
-        case NewList
-        
-        init?(fullType: String) {
-            guard let last = fullType.components(separatedBy: ".").last else {return nil}
-            self.init(rawValue: last)
-        }
-        
-        var type: String {
-            return Bundle.main.bundleIdentifier! + ".\(self.rawValue)"
-        }
-    }
-    
-    func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
-        var handled = false
-        
-        guard ShortcutId(fullType: shortcutItem.type) != nil else { return false }
-        guard let shortcutType = shortcutItem.type as String? else { return false }
-        
-        switch (shortcutType) {
-            case ShortcutId.Home.type:
-                handled = true
-                
-                let storyboard = UIStoryboard(name: "Home", bundle: nil)
-                let navVC = storyboard.instantiateViewController(withIdentifier: "listViewController") as! ListViewController
-                self.window?.rootViewController?.present(navVC, animated: true, completion: nil)
-                
-                break
-            
-            case ShortcutId.NewList.type: break
-            default: break
-        }
-        
-        return handled
-    }
+
     
     
     func application(_ application: UIApplication,
                      performActionFor shortcutItem: UIApplicationShortcutItem,
                      completionHandler: @escaping (Bool) -> Void) {
-        let handledShortcutItem = self.handleShortcutItem(shortcutItem: shortcutItem)
-        completionHandler(handledShortcutItem)
+        
+        if shortcutItem.type == "com.listtracker.home" {
+            
+            let vc = UIStoryboard(name: "Main", bundle: nil)
+            let contact = vc.instantiateViewController(withIdentifier: "navigationController") as! UINavigationController
+            self.window?.rootViewController?.present(contact, animated: true, completion: nil)
+            
+        } else if shortcutItem.type == "com.listtracker.newlist" {
+//            return
+            
+            let vc = UIStoryboard(name: "Main", bundle: nil)
+            let contact = vc.instantiateViewController(withIdentifier: "Add New Task") as! AddNewTaskViewController
+            self.window?.rootViewController?.present(contact, animated: true, completion: nil)
+            
+        }
+        
     }
 
     lazy var persistentContainer: NSPersistentContainer = {
