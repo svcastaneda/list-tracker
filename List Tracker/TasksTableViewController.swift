@@ -21,10 +21,12 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
         super.viewDidLoad()
         
         self.title = category?.title
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addTask))
-        let shareButton = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(shareList))
-        self.navigationItem.rightBarButtonItems = [addButton, shareButton]
     }
+    
+    @IBAction func addTaskButtonPressed(_ sender: UIBarButtonItem) {
+        addTask()
+    }
+    
     
     // Generate the popup that asks the user for new category name
     func addTask() {
@@ -32,11 +34,6 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
         newTaskViewController.delegate = self
         self.navigationController?.pushViewController(newTaskViewController, animated: true)
     }
-    
-    func shareList() {
-        
-    }
-    
     
     
     // Enables swipe to delete feature
@@ -170,6 +167,5 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
             else { return }
         taskViewController.task = category?.tasks![indexPath.row] as? Task
     }
-    
 
 }
