@@ -10,7 +10,7 @@ import UIKit
 import MessageUI
 import CoreData
 
-class TasksTableViewController: UITableViewController, NewTaskProtocol {
+class TasksTableViewController: UITableViewController, NewTaskProtocol, MFMessageComposeViewControllerDelegate {
     
     @IBOutlet var table: UITableView!
     
@@ -34,6 +34,27 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol {
         newTaskViewController.delegate = self
         self.navigationController?.pushViewController(newTaskViewController, animated: true)
     }
+    
+    
+    // MESSAGING
+    func messageComposeViewController(_ controller: MFMessageComposeViewController, didFinishWith result: MessageComposeResult) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func shareListButtonPressed(_ sender: UIBarButtonItem) {
+        if MFMessageComposeViewController.canSendText() {
+            let controller = MFMessageComposeViewController()
+            let message = category?.tasks?.array.flatMap({
+                (t) -> String in (t as! Task).title!
+            })
+            
+            controller.body = (category?.title)! + ": " + (message?.joined(separator: ", "))!
+            controller.recipients = []
+            controller.messageComposeDelegate = self
+            self.present(controller, animated: true, completion: nil)
+        }
+    }
+    
     
     
     // Enables swipe to delete feature
