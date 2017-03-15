@@ -17,6 +17,8 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol, MFMessag
     var category: Category?
     var task: Task?
     
+    var dateFormatter = DateFormatter()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -104,7 +106,13 @@ class TasksTableViewController: UITableViewController, NewTaskProtocol, MFMessag
         let task = category?.tasks![indexPath.row] as! Task
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         
+        dateFormatter.dateFormat = "MM/dd/YYYY"
+        
+        let dateString = dateFormatter.string(from: task.dueDate as! Date)
+        let dueDate = "Due: \(dateString)"
+        
         cell.textLabel?.text = task.title
+        cell.detailTextLabel?.text = dueDate
         // Configure the cell...
 
         return cell
