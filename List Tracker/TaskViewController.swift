@@ -37,7 +37,7 @@ class TaskViewController: UIViewController {
         if let t = task {
             navigationItem.title = t.title
             let dateString = dateFormatter.string(from: t.dueDate as! Date)
-            dueDateLabel.text = "Due: \(dateString)"
+            dueDateLabel.text = "Due:\t\(dateString)"
             detailsText.text = t.details
         }
     }

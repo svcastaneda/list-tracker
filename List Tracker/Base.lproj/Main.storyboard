@@ -295,27 +295,43 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Due Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i49-fO-yBG">
-                                <rect key="frame" x="28" y="80" width="323" height="21.5"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <rect key="frame" x="28" y="80" width="323" height="19.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="No Details" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="BsC-0J-ixI">
-                                <rect key="frame" x="24" y="121.5" width="327" height="525.5"/>
+                                <rect key="frame" x="24" y="141.5" width="327" height="505.5"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oY7-Uu-8ty">
+                                <rect key="frame" x="28" y="109.5" width="59" height="20"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap below to edit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9vp-iu-qDq">
+                                <rect key="frame" x="28" y="129.5" width="83" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="9vp-iu-qDq" firstAttribute="leading" secondItem="i49-fO-yBG" secondAttribute="leading" id="30G-Uh-WgV"/>
+                            <constraint firstItem="oY7-Uu-8ty" firstAttribute="leading" secondItem="i49-fO-yBG" secondAttribute="leading" id="CuG-RU-oKi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="i49-fO-yBG" secondAttribute="trailing" constant="8" id="FTV-dC-QTf"/>
                             <constraint firstItem="kEE-qc-FfP" firstAttribute="top" secondItem="BsC-0J-ixI" secondAttribute="bottom" constant="20" id="XAV-qR-cs3"/>
                             <constraint firstItem="BsC-0J-ixI" firstAttribute="leading" secondItem="Q4u-6s-x7T" secondAttribute="leadingMargin" constant="8" id="YrM-AK-1Cw"/>
                             <constraint firstItem="i49-fO-yBG" firstAttribute="top" secondItem="Zbu-k6-sxK" secondAttribute="bottom" constant="16" id="aQK-1D-ohD"/>
+                            <constraint firstItem="BsC-0J-ixI" firstAttribute="top" secondItem="9vp-iu-qDq" secondAttribute="bottom" id="euv-RR-Gsf"/>
+                            <constraint firstItem="oY7-Uu-8ty" firstAttribute="top" secondItem="i49-fO-yBG" secondAttribute="bottom" constant="10" id="ia0-f3-u4s"/>
+                            <constraint firstItem="9vp-iu-qDq" firstAttribute="top" secondItem="oY7-Uu-8ty" secondAttribute="bottom" id="jai-kW-V1P"/>
                             <constraint firstItem="i49-fO-yBG" firstAttribute="leading" secondItem="Q4u-6s-x7T" secondAttribute="leadingMargin" constant="12" id="jfW-Bv-IOQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BsC-0J-ixI" secondAttribute="trailing" constant="8" id="p4u-zv-le8"/>
-                            <constraint firstItem="BsC-0J-ixI" firstAttribute="top" secondItem="i49-fO-yBG" secondAttribute="bottom" constant="20" id="vMD-lL-V4n"/>
                         </constraints>
                         <connections>
                             <action selector="backgroundTouched:" destination="LaO-1b-cbs" eventType="touchDown" id="kB2-hu-g6M"/>
